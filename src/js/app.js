@@ -1,5 +1,6 @@
 App = {
   loading: false,
+  allblocks:[],
   contracts: {},  
   load: async () => {
     await App.loadWeb3()
@@ -59,6 +60,7 @@ App = {
     App.contracts.Sample.setProvider(App.web3Provider)
     // Hydrate the smart contract with values from the blockchain
     App.land = await App.contracts.Sample.deployed()
+    App.listenForEvents();
   },
   loadContract2: async () => {
     // Create a JavaScript version of the smart contract
@@ -535,6 +537,7 @@ App = {
 
 // Instanciate by address
 App.land = SimpleStorageContract.at("0x7fA874A64b329c344eEE6945A89330843eF66D24");
+console.log(App.land.address)
 
 
   },
@@ -542,21 +545,86 @@ App.land = SimpleStorageContract.at("0x7fA874A64b329c344eEE6945A89330843eF66D24"
   render: async () => {
     // $("#meta").html(App.account)
     // $("#showpage").show();
+    //window.alert("loded")
    
   } ,
+  listenForEvents: async function() {
+    App.contracts.Sample.deployed().then(function(instance) {
+      // Restart Chrome if you are unable to receive this event
+      // This is a known issue with Metamask
+      // https://github.com/MetaMask/metamask-extension/issues/2393
+      instance.Transfer({}, {
+        fromBlock: 0,
+        toBlock: 'latest'
+      }).watch(function(error, event) {
+        console.log("event triggered", event)
+        // Reload when a new vote is recorded
+        App.allblocks.push(event); 
+        App.render();
+      });
+    });
+  },
+  
+listenForEvents333:async  function() {   
+  
+      var instance=await  App.contracts.Sample.deployed()
+        instance.getPastEvents("Transfer", { fromBlock: 0 }).then((events) => {
+          window.alert("previous event");
+          App.allblocks.push(events);          
+        });
+        instance.contract.events.Transfer({
+          filter: {}, // Using an array means OR: e.g. 20 or 23
+          fromBlock: 0,
+          toBlock: 'latest'
+      }, function(error, event){ console.log(event); 
+      })
+      .on('data', function(event){
+          //console.log(event); // same results as the optional callback above
+          //window.alert("event cPTURD");
+          App.allblocks.push(event); 
+      })
+      .on('changed', function(event){
+          // remove event from local database
+          window.alert("event on Changed");
+      })
+      .on('error', console.error);
+},
+
+
   mint :async ()=>{    
-    await App.load();
-    var amount=$("#price").val();
-    //window.alert(amount)
-    var amountinwei=amount*1000000000000000000;
-    //await App.token.transfer(App.crowd.address,amount,{from:App.account})
+   // await App.load();
+  //  Reading values of tokenId ,price and URL from the html
     var tokenid=parseInt($("#tokenid").val());
+    var amount=$("#price").val();
+    var amountinwei=amount*1000000000000000000;
     var url="https://erpsoftwares.in/NFT/datainsert/uploads/1.jpg"
-    console.log(App.land.address)
+    var sold=await App.land.purchased(tokenid);
+    console.log(sold)
+    if(sold){
+      window.alert("This land already sold");
+      return
+    }
     await App.land.purchase(tokenid,url,{from:App.account,value:amountinwei});
-  } 
+  } ,
+  history :async ()=>{    
+    $("#displayhistory").empty();
+     var tokenidhistory=parseInt($("#tokenidhistory").val());
+     var p=0;
+     for(var i=0;i<App.allblocks.length;i++){
+      //console.log(App.allblocks[i].args.tokenId)
+       if(parseInt(App.allblocks[i].args.tokenId)==tokenidhistory){
+         p++;
+         var str="<tr><td>"+p+"</td><td>"+tokenidhistory+"</td><td>"+App.allblocks[i].args.from+"</td><td>"+App.allblocks[i].args.to+"</td></tr>"
+          $("#displayhistory").append(str)
+       }
+     }
+
+   } 
 
 }
+$( document ).ready(function() {
+  App.load();
+});
 
 
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Pete's Pet Shop</title>
+    <title>Land NFT</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
             </tr>
             <tr>
               <td>Contract Address</td>
-              <td><a href="https://rinkeby.etherscan.io/address/0x142A54ccf90A8162Fee0c69A887fA52a3DbAb220">0x142A54ccf90A8162Fee0c69A887fA52a3DbAb220</a></td>
+              <td><a href="https://rinkeby.etherscan.io/address/0x68E25cf5316a89a63624ad88328bc3bC816C43Fd">0x68E25cf5316a89a63624ad88328bc3bC816C43Fd</a></td>
             </tr>
             <tr>
               <input type="text" id="tokenid" placeholder="Enter Token ID" class="form-control" required>
@@ -47,10 +47,38 @@
             <tr>
               <td colspan="2" style="text-align: center;"><button class="btn btn-primary btn-lg" onclick="App.mint()" >Buy</button></td>
             </tr>
+            <tr>
+              <td><input type="text" id="tokenidhistory" placeholder="Enter Token ID for history" class="form-control"></td>
+              <td><button class="btn btn-primary btn-lg" onclick="App.history()"  >History</button></td>
+            </tr>
+            <tr>
+              
+            </tr>
+            
           </table>
        </div>
        <div class="col col-12 col-md-3">
         
+       </div>
+       <div class="row">
+        <div class="col col-12 col-md-2"></div>
+        <div class="col col-12 col-md-8">
+          <h2>History</h2>
+          <table class="table">
+            <tr>
+              <th>SINO</th>
+              <th>Token ID</th>
+              <th>From</th>
+              <th>To</th>
+            </tr>
+            <tbody id="displayhistory">
+
+            </tbody>
+          </table>
+        </div>
+        <div class="col col-12 col-md-2"></div>
+        
+       
        </div>
       
      </div>

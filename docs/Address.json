@@ -1,9 +1,9 @@
 {
   "contractName": "Address",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Collection of functions related to the address type\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@openzeppelin/contracts/utils/Address.sol\":\"Address\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x6abaf4ab23087b78eacfc402eec11a9e497e0b59239bc6987127d30c83bfd459\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7632af827e6819385d822e05dfad4e148e80bdf478df1e87d9241ac27238c0d6\",\"dweb:/ipfs/QmbRXZehjPZ7jmEQSjodUURGPua7myMwD8JCMjBMUPe5ce\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f01bc7790f7f3699bfdbf7f38460085fb18f32081a94e2deab532c3ad3920a3864736f6c63430008000033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f01bc7790f7f3699bfdbf7f38460085fb18f32081a94e2deab532c3ad3920a3864736f6c63430008000033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.1+commit.df193b15\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Collection of functions related to the address type\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@openzeppelin/contracts/utils/Address.sol\":\"Address\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x6abaf4ab23087b78eacfc402eec11a9e497e0b59239bc6987127d30c83bfd459\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7632af827e6819385d822e05dfad4e148e80bdf478df1e87d9241ac27238c0d6\",\"dweb:/ipfs/QmbRXZehjPZ7jmEQSjodUURGPua7myMwD8JCMjBMUPe5ce\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212204929d392e31e73a6d67d33434fc9097006cf23c060d8212e71e0b4c08f79050664736f6c63430008010033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212204929d392e31e73a6d67d33434fc9097006cf23c060d8212e71e0b4c08f79050664736f6c63430008010033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
@@ -7801,11 +7801,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+    "version": "0.8.1+commit.df193b15.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-23T16:35:00.522Z",
+  "updatedAt": "2022-06-03T18:02:10.267Z",
   "devdoc": {
     "details": "Collection of functions related to the address type",
     "kind": "dev",

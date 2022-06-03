@@ -1,11 +1,13 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Land is ERC721URIStorage,Ownable {
     using Counters for Counters.Counter;
+    mapping(uint256=>bool) public purchased;
+    mapping(uint256=>address[]) history;
     constructor() ERC721("Land", "LND")  {
         
     }
@@ -18,6 +20,8 @@ contract Land is ERC721URIStorage,Ownable {
         //uint256 newItemId = _tokenIds.current();
         payable(owner()).transfer(msg.value);
         _mint(msg.sender, _tokenId); 
-        _setTokenURI(_tokenId, _uri);       
+        _setTokenURI(_tokenId, _uri);   
+        purchased[_tokenId]=true;
+           
     }      
 }
